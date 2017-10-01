@@ -7,7 +7,7 @@ import notify2
 from HTMLParser import HTMLParser
 import cPickle as pickle
 
-HISTROOT = '/home/mihir/.tw_hist'
+HISTROOT = '<histroot>'
 
 # A class that helps us parse tweets. 
 class TweetParser(HTMLParser):
