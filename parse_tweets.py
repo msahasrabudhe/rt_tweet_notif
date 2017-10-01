@@ -44,7 +44,7 @@ def get_tag_data(p_source, stag, etag):
 
     # Return the tweet in HTML, as well as the new position
     #    where to reset our page source. 
-    return p_source[tpos:tpos+epos], tpos+epos 
+    return p_source[tpos+nchars_tag:tpos+epos], tpos+epos 
 
 # Handler to add a close button to the notifications. 
 def close_notif(notif_obj, action):
