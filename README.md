@@ -30,7 +30,8 @@ The default value is 180 (every three minutes). Please keep this value high
 in order to avoid unneessary requests to the servers.
 
 Simply update the value of `HISTROOT` in `parse_tweets.py`, to point to a 
-directory where you would like to store the tweet history before executing. 
+directory where you would like to store the tweet history, before executing
+for the first time.
 
 Example usage:
 
