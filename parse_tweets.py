@@ -29,7 +29,7 @@ class TweetParser(HTMLParser):
             self.tw += data
 
 # Retrieve the first tweet between stag and etag. 
-def get_tweet_from_HTML(p_source, stag, etag):
+def get_tag_data(p_source, stag, etag):
     nchars_tag = len(stag)
 
     # Find the first occurrence of stag in p_source. 
@@ -81,6 +81,11 @@ def parse_feed(feed):
     # Close connection. 
     tw_handle.close()
 
+    # Retrieve the account name, to title our notifications properly.
+    account_name = get_tag_data(p_source, '<title>', '</title>')
+    # Get the account name, but exclude " | Twitter" from it. 
+    account_name = account_name[0].split('|')[0].strip()
+
     # Tags to look for. 
     stag = '<div class="js-tweet-text-container">'
     etag = '</div>'
@@ -89,7 +94,7 @@ def parse_feed(feed):
     new_tweets = []
 
     while True:
-        next_tweet = get_tweet_from_HTML(p_source, stag, etag)
+        next_tweet = get_tag_data(p_source, stag, etag)
 
         # If there are no more occurrences of this tag, we
         #    do not have any more tweets. 
@@ -106,7 +111,7 @@ def parse_feed(feed):
         parser.feed(this_tweet)
 
         # Check if this tweet already exists. 
-        # If so, we need no scan any further. 
+        # If so, we need not scan any further. 
         if n_tweets > 0 and prv_tweets[f_tweet] == parser.tw:
             break
 
@@ -127,12 +132,14 @@ def parse_feed(feed):
     notifs = []
     notify2.init('Tw updates')
 
+    # We read the tweets in reverse chronological order. So, we must add them 
+    #    to our dictionary in the reverse order.
     for tw in new_tweets[::-1]:
         f_tweet = f_tweet + 1
         prv_tweets[f_tweet] = tw
 
         # Create a notification. 
-        notifs   += [notify2.Notification('@'+tw_userhandle, tw, 'Update from @'+tw_userhandle)]
+        notifs   += [notify2.Notification(account_name, tw, 'Update from @'+tw_userhandle)]
         tw_notif  = notifs[-1]
 
         # Set no timeout. 
