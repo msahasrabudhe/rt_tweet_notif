@@ -78,6 +78,8 @@ def parse_feed(feed):
     # Open handle to retrieve tweets. 
     tw_handle = urllib2.urlopen(feed)
     p_source  = tw_handle.read()
+    # Close connection. 
+    tw_handle.close()
 
     # Tags to look for. 
     stag = '<div class="js-tweet-text-container">'
