@@ -15,10 +15,13 @@ Should work on Linux; tested on Ubuntu. Written in Python 2.7. Needs the librari
 * cPickle
 
 All these libraries are easily installable through `pip.`
+
 Usage: 
-'''
+
+```python
     python notify_rtt.py <twitter URL> [<delay>]
-'''
+```
+
 `<twitter URL>` specifies which twitter user to get notifications from. 
 `<delay>` is an optional argument specifying how frequently to check for updates. 
 The default value is 180 (every three minutes). Please keep this value low
