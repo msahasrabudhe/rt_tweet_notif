@@ -41,8 +41,9 @@ This will start a background process that will query the official Twitter
 account of Google every five minutes, and display a new notification on the screen
 if Google has sent a tweet in the last five minutes. 
 
-**PS**: First-time queries to a new user causes the program to fetch the twenty
-most recent tweets, and hence you shall see twenty notifications on the screen.
+**PS**: First-time queries to a new account (that does not already have history 
+        in `HISTROOT`) causes the program to fetch the twenty
+        most recent tweets, and hence you shall see twenty notifications on the screen.
 
 **Implementation**
 
