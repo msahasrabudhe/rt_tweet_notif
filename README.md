@@ -1,12 +1,14 @@
 # rt_tweet_notif
 
-An ad-hoc system to receive real-time tweets from a twitter account. 
+An ad-hoc system to receive real-time tweets from a twitter account, and display
+notifications on the screen. 
 
 Does not require Twitter API or associating your account with Twitter Apps. 
 Does not require login. 
 
 **Requirements**
-Python 2.7 and the libraries
+
+Should work on Linux; tested on Ubuntu. Written in Python 2.7. Needs the libraries
 * notify2
 * urllib2
 * HTMLParser
@@ -26,6 +28,7 @@ Simply update the value of HISTROOT in parse_tweets.py, to point to a
 directory where you would like to store the tweet history before executing. 
 
 **Implementation**
+
 The program fetches the page source for the requested page every `<delay>` seconds. 
 It then parses the source to check for new tweets (that always appear between two tags).
 Notifications are sent using `notify2` to the user, which are set to never expire, 
