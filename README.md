@@ -4,7 +4,7 @@ An ad-hoc system to receive real-time tweets from a twitter account, and display
 notifications on the screen. 
 
 Does not require Twitter API or associating your account with Twitter Apps. 
-Does not require login. 
+Does not a Twitter require login. 
 
 **Requirements**
 
@@ -23,12 +23,26 @@ Usage:
 ```
 
 `<twitter URL>` specifies which twitter user to get notifications from. 
+It should be the entire URL. For example, `http://twitter.com/ap`
 `<delay>` is an optional argument specifying how frequently to check for updates. 
-The default value is 180 (every three minutes). Please keep this value low
+The default value is 180 (every three minutes). Please keep this value high
 in order to avoid unneessary requests to the servers.
 
 Simply update the value of `HISTROOT` in `parse_tweets.py`, to point to a 
 directory where you would like to store the tweet history before executing. 
+
+Example usage:
+
+```python
+    python notify_rtt.py http://twitter.com/google 300 &
+```
+
+This will start a background process that will query the official Twitter 
+account of Google every five minutes, and display a new notification on the screen
+if Google has sent a tweet in the last five minutes. 
+
+**PS**: First-time queries to a new user causes the program to fetch the twenty
+most recent tweets, and hence you shall see twenty notifications on the screen.
 
 **Implementation**
 

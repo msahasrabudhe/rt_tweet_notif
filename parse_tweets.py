@@ -62,10 +62,10 @@ def parse_feed(feed):
     # Load previous tweets. 
     if not os.path.exists(tw_hist):
         # We are seeing this user for the first time. 
-        tw_file  = open(tw_hist, 'w')
+        tw_file    = open(tw_hist, 'w')
         tw_file.close()
-        n_tweets = 0
-        f_tweet  = -1
+        n_tweets   = 0
+        f_tweet    = -1
         prv_tweets = {}
     else:
         # We have seen this user before. 
