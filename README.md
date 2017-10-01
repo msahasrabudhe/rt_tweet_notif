@@ -23,7 +23,8 @@ Usage:
 ```
 
 `<twitter URL>` specifies which twitter user to get notifications from. 
-It should be the entire URL. For example, `http://twitter.com/ap`
+It should be the entire URL. For example, `http://twitter.com/ap`.
+
 `<delay>` is an optional argument specifying how frequently to check for updates. 
 The default value is 180 (every three minutes). Please keep this value high
 in order to avoid unneessary requests to the servers.
