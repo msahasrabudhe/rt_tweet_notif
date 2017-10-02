@@ -46,6 +46,9 @@ if Google has sent a tweet in the last five minutes.
 **PS**: First-time queries to a new account (that does not already have history 
         in `HISTROOT`) causes the program to fetch the twenty
         most recent tweets, and hence you shall see twenty notifications on the screen.
+        However, this can be easily avoided by modifying the code a little bit. 
+        In particular, one can raise a flag if the history file doesn't already exist
+        and avoid sending notifications if this flag is raised. 
 
 **Implementation**
 
