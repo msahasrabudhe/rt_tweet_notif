@@ -8,7 +8,7 @@ Does not a Twitter require login.
 
 **Requirements**
 
-Should work on Linux; tested on Ubuntu. Written in Python 2.7. Needs the libraries
+Should work on Linux; tested on Ubuntu with Cinnamon desktop. Written in Python 2.7. Needs the libraries
 * notify2
 * urllib2
 * HTMLParser
