@@ -7,7 +7,7 @@ import notify2
 from HTMLParser import HTMLParser
 import cPickle as pickle
 
-HISTROOT = '<histroot>'
+HISTROOT = '/home/dokania/.tw_hist'
 
 # A class that helps us parse tweets. 
 class TweetParser(HTMLParser):
@@ -49,6 +49,10 @@ def get_tag_data(p_source, stag, etag):
 # Handler to add a close button to the notifications. 
 def close_notif(notif_obj, action):
     notif_obj.close()
+
+# Handler to add a button to open the twitter feed in browser. 
+def open_account_firefox(notif_obj, action, feed):
+    ff = os.popen('firefox %s 2> /dev/null &' %(feed))
 
 def parse_feed(feed):
     # Remove trailing '/' from feed.
@@ -142,12 +146,14 @@ def parse_feed(feed):
         notifs   += [notify2.Notification(account_name, tw, 'Update from @'+tw_userhandle)]
         tw_notif  = notifs[-1]
 
-        # Set no timeout. 
-        tw_notif.set_timeout(notify2.EXPIRES_NEVER)
+        # Set timeout of one minute. 
+        tw_notif.set_timeout(60000)                 # Sixty-thousand milliseconds. 
         # Set low urgency.
         tw_notif.set_urgency(notify2.URGENCY_LOW)
         # Add button to close it. 
         tw_notif.add_action('action_close', 'Close', close_notif)
+        # Add button to open twitter account page in Firefox
+        tw_notif.add_action('open_tw_account', 'Open in Firefox', open_account_firefox, user_data=feed)
         # Show the notification
         tw_notif.show()
 
