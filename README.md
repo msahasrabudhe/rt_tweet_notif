@@ -14,7 +14,7 @@ Should work on Linux; tested on Ubuntu with Cinnamon desktop. Written in Python 
 * HTMLParser
 * cPickle
 
-All these libraries are easily installable through `pip.`
+All these libraries are easily installable through `pip`.
 
 Usage: 
 
