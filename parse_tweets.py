@@ -80,8 +80,15 @@ def parse_feed(feed):
         f_tweet    = prv_tweets.keys()[-1] if n_tweets > 0 else -1
     
     # Open handle to retrieve tweets. 
-    tw_handle = urllib2.urlopen(feed)
+    try:
+        tw_handle = urllib2.urlopen(feed)
+    except:
+        print 'Unable to connect to %s right now.' %(feed) 
+        return
+
+    # No errors.
     p_source  = tw_handle.read()
+
     # Close connection. 
     tw_handle.close()
 
